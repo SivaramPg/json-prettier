@@ -17,6 +17,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 }) => {
 	const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { files } = e?.target;
+
 		if (files && files[0]) {
 			const file = files[0];
 
@@ -36,6 +37,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 			reader.readAsText(file);
 		}
 	};
+
 	return (
 		<>
 			<LabelButton backgroundColor="#44ee9599" htmlFor="file-upload">
@@ -52,7 +54,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 				type="file"
 				id="file-upload"
 				name="Upload File"
-				accept=".json"
+				accept="application/json"
 				onChange={handleFileInput}
 			/>
 		</>
