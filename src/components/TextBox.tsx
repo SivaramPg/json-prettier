@@ -4,7 +4,9 @@ import styled from 'styled-components/macro';
 import usePrevious from '../hooks/usePrevious';
 
 import { FlexContainer } from '../components/styledComponents';
+
 import okIcon from '../assets/icons/ok-32.png';
+import deleteIcon from '../assets/icons/delete-32.png';
 
 type TextBoxProps = {
 	id: string;
@@ -13,6 +15,7 @@ type TextBoxProps = {
 	readOnly: boolean;
 	maxLength: number;
 	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+	handleClearTextbox?: () => void;
 };
 
 const TextBox: FunctionComponent<TextBoxProps> = ({
@@ -22,6 +25,7 @@ const TextBox: FunctionComponent<TextBoxProps> = ({
 	readOnly,
 	maxLength,
 	onChange,
+	handleClearTextbox = () => {},
 }) => {
 	const [copiedToClipboard, setCopyStatus] = useState(false);
 	const previousValue = usePrevious(value);
@@ -46,6 +50,14 @@ const TextBox: FunctionComponent<TextBoxProps> = ({
 
 	return (
 		<TextBoxContainer>
+			{!readOnly && (
+				<DeleteIcon
+					src={deleteIcon}
+					alt="delete-icon"
+					title="Clear the text box."
+					onClick={handleClearTextbox}
+				/>
+			)}
 			{readOnly && (
 				<CopyToClipboardContainer
 					title="Copy to Clipboard"
@@ -111,4 +123,14 @@ const CheckmarkIcon = styled.img`
 	right: 5px;
 	background-color: #fff;
 	border-radius: 50%;
+`;
+
+const DeleteIcon = styled.img`
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	bottom: 25px;
+	right: 25px;
+	background-color: #fff;
+	cursor: pointer;
 `;

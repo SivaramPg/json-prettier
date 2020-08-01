@@ -54,6 +54,11 @@ const MainAppContainer = () => {
 		}
 	};
 
+	const handleClearTextbox = () => {
+		setInputString('');
+		setFormattedString('');
+	};
+
 	return (
 		<div>
 			<MainContainer>
@@ -67,6 +72,7 @@ const MainAppContainer = () => {
 							readOnly={false}
 							maxLength={1000000000}
 							onChange={handleStringInput}
+							handleClearTextbox={handleClearTextbox}
 						/>
 						<h1>&rarr;</h1>
 						<TextBox
