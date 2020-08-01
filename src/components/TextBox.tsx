@@ -41,7 +41,6 @@ const TextBox: FunctionComponent<TextBoxProps> = ({
 
 		if (copyText && copyText.value) {
 			copyText.select();
-			copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
 			document.execCommand('copy');
 			setCopyStatus(true);
