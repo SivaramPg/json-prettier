@@ -24,6 +24,15 @@ export const Button = styled.button`
 		props.backgroundColor ? props.backgroundColor : 'default'};
 `;
 
+export const LabelButton = styled.label`
+	cursor: pointer;
+	width: 200px;
+	padding: 15px;
+	background-color: ${(props: ButtonProps) =>
+		props.backgroundColor ? props.backgroundColor : '#e5e5e5'};
+	border: 2px solid #333;
+`;
+
 export const ButtonText = styled.p`
 	font-size: 14px;
 	font-weight: bold;

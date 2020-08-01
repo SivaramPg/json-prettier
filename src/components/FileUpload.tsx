@@ -1,5 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { FlexRowContainer } from '../components/styledComponents';
+import styled from 'styled-components/macro';
+
+import {
+	FlexRowContainer,
+	LabelButton,
+	ButtonIcon,
+	ButtonText,
+} from '../components/styledComponents';
 
 type FileUploadProps = {
 	onUploadSuccess: (jsonString: string) => void;
@@ -31,38 +38,30 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 		}
 	};
 	return (
-		<div>
-			<label style={{ cursor: 'pointer' }} htmlFor="file-upload">
-				<FlexRowContainer
-					style={{
-						width: 200,
-						padding: 15,
-						backgroundColor: '#44ee9599',
-						border: '2px solid #333',
-					}}
-				>
-					<img
-						style={{
-							width: 30,
-							height: 30,
-						}}
+		<>
+			<LabelButton backgroundColor="#44ee9599" htmlFor="file-upload">
+				<FlexRowContainer>
+					<ButtonIcon
 						src="https://img.icons8.com/wired/64/000000/upload.png"
 						alt="upload-icon"
-					/>{' '}
+					/>
 					&nbsp;&nbsp;
-					<p style={{ fontWeight: 'bold' }}>Upload File</p>
+					<ButtonText>Upload File</ButtonText>
 				</FlexRowContainer>
-			</label>
-			<input
-				style={{ display: 'none' }}
+			</LabelButton>
+			<FileInput
 				type="file"
 				id="file-upload"
 				name="Upload File"
 				accept=".json"
 				onChange={handleFileInput}
 			/>
-		</div>
+		</>
 	);
 };
 
 export default FileUpload;
+
+const FileInput = styled.input`
+	display: none;
+`;
