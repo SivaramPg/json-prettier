@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { saveAs } from 'file-saver';
 
 import usePrevious from '../hooks/usePrevious';

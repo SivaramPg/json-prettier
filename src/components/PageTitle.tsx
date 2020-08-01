@@ -1,5 +1,5 @@
 import React, { memo, FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 type PageTitleProps = {
 	title: string;
