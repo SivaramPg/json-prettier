@@ -1,7 +1,10 @@
 import React, { useState, useEffect, FunctionComponent } from 'react';
+import styled from 'styled-components/macro';
 
-import okIcon from '../assets/icons/ok-32.png';
 import usePrevious from '../hooks/usePrevious';
+
+import { FlexContainer } from '../components/styledComponents';
+import okIcon from '../assets/icons/ok-32.png';
 
 type TextBoxProps = {
 	id: string;
@@ -42,60 +45,58 @@ const TextBox: FunctionComponent<TextBoxProps> = ({
 	};
 
 	return (
-		<div
-			style={{
-				position: 'relative',
-				margin: '10px',
-			}}
-		>
+		<TextBoxContainer>
 			{readOnly && (
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						position: 'absolute',
-						width: 50,
-						height: 50,
-						backgroundColor: '#fff',
-						boxShadow: '2px 2px 8px rgba(0, 0, 0, 0.25)',
-						borderRadius: 7,
-						top: 20,
-						right: 20,
-						cursor: 'pointer',
-					}}
+				<CopyToClipboardContainer
 					title="Copy to Clipboard"
 					onClick={copyToClipboard}
 				>
 					<h2>&#128203;</h2>
-					{copiedToClipboard && (
-						<img
-							style={{
-								position: 'absolute',
-								width: 15,
-								height: 15,
-								bottom: 5,
-								right: 5,
-								backgroundColor: 'white',
-								borderRadius: '50%',
-							}}
-							src={okIcon}
-							alt="checkmark"
-						/>
-					)}
-				</div>
+					{copiedToClipboard && <CheckmarkIcon src={okIcon} alt="checkmark" />}
+				</CopyToClipboardContainer>
 			)}
-			<textarea
+			<TextArea
 				id={id}
-				style={{ padding: 5, fontFamily: 'Fira Code' }}
 				placeholder={placeholder}
 				value={value}
 				readOnly={readOnly}
 				maxLength={maxLength}
 				onChange={onChange}
 			/>
-		</div>
+		</TextBoxContainer>
 	);
 };
 
 export default TextBox;
+
+const TextBoxContainer = styled.div`
+	position: relative;
+	margin: 10px;
+`;
+
+const TextArea = styled.textarea`
+	padding: 5px;
+	font-family: 'Fira Code';
+`;
+
+const CopyToClipboardContainer = styled(FlexContainer)`
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+	border-radius: 7px;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+`;
+
+const CheckmarkIcon = styled.img`
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	bottom: 5px;
+	right: 5px;
+	background-color: #fff;
+	border-radius: 50%;
+`;
