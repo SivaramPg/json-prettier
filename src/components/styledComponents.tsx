@@ -20,6 +20,9 @@ interface ButtonProps {
 }
 
 export const Button = styled.button`
+	width: 220px;
+	padding: 15px;
+	cursor: pointer;
 	background-color: ${(props: ButtonProps) =>
 		props.backgroundColor ? props.backgroundColor : 'default'};
 `;
@@ -34,7 +37,7 @@ export const LabelButton = styled.label`
 `;
 
 export const ButtonText = styled.p`
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 `;
 

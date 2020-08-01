@@ -77,6 +77,18 @@ const TextBoxContainer = styled.div`
 const TextArea = styled.textarea`
 	padding: 5px;
 	font-family: 'Fira Code';
+	width: 700px;
+	max-width: 720px;
+	height: 60vh;
+	resize: none;
+
+	&:focus {
+		background-color: #ffff9911;
+	}
+
+	&::selection {
+		background-color: #90e3ee;
+	}
 `;
 
 const CopyToClipboardContainer = styled(FlexContainer)`
