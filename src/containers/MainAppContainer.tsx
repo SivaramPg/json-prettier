@@ -14,6 +14,9 @@ import {
 	FlexContainer,
 	FlexRowContainer,
 	FlexColumnContainer,
+	Button,
+	ButtonIcon,
+	ButtonText,
 } from '../components/styledComponents';
 
 const MainAppContainer = () => {
@@ -76,24 +79,16 @@ const MainAppContainer = () => {
 					</TextareaContainer>
 					<ActionButtonsContainer>
 						<FileUpload onUploadSuccess={setFileStringInput} />
-						<button style={{ backgroundColor: '#99ee33' }} onClick={formatJson}>
+						<Button backgroundColor="#99ee33" onClick={formatJson}>
 							<FlexRowContainer>
-								<img
-									style={{ width: 30, height: 30 }}
+								<ButtonIcon
 									src="https://img.icons8.com/ios/50/000000/clear-formatting.png"
 									alt="format-icon"
 								/>
 								&nbsp;&nbsp;
-								<p
-									style={{
-										fontWeight: 'bold',
-										fontSize: 16,
-									}}
-								>
-									Format
-								</p>
+								<ButtonText>Format</ButtonText>
 							</FlexRowContainer>
-						</button>
+						</Button>
 						<FileDownload
 							btnText="Download JSON file"
 							onClick={handleFileDownload}
@@ -125,31 +120,10 @@ const SubContainer = styled(FlexColumnContainer)`
 const TextareaContainer = styled(FlexRowContainer)`
 	width: 100%;
 	min-height: 60vh;
-
-	& textarea {
-		width: 700px;
-		max-width: 720px;
-		height: 60vh;
-		resize: none;
-	}
-
-	& textarea:focus {
-		background-color: #ffff9911;
-	}
-
-	& textarea::selection {
-		background-color: #90e3ee;
-	}
 `;
 
 const ActionButtonsContainer = styled(FlexRowContainer)`
 	width: 100%;
 	justify-content: space-evenly;
 	margin: 30px 0;
-
-	& button {
-		width: 220px;
-		padding: 15px;
-		cursor: pointer;
-	}
 `;
