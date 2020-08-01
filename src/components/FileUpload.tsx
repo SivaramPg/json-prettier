@@ -19,7 +19,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 		const { files } = e?.target;
 		if (files && files[0]) {
 			const file = files[0];
-			console.log(file);
+
 			if (file.type !== 'application/json') {
 				alert('Invalid JSON file.');
 				return;
@@ -31,7 +31,6 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({
 
 			const reader = new FileReader();
 			reader.onloadend = () => {
-				console.log('loaded');
 				onUploadSuccess(String(reader.result));
 			};
 			reader.readAsText(file);
