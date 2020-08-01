@@ -1,6 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { FlexRowContainer } from '../components/styledComponents';
+import {
+	FlexRowContainer,
+	Button,
+	ButtonText,
+	ButtonIcon,
+} from '../components/styledComponents';
 
 type FileDownloadProps = {
 	btnText: string;
@@ -12,17 +17,16 @@ const FileDownload: FunctionComponent<FileDownloadProps> = ({
 	onClick,
 }) => {
 	return (
-		<button style={{ backgroundColor: '#44ee9599' }} onClick={onClick}>
+		<Button backgroundColor="#44ee9599" onClick={onClick}>
 			<FlexRowContainer>
-				<img
-					style={{ width: 30, height: 30 }}
+				<ButtonIcon
 					src="https://img.icons8.com/wired/64/000000/download.png"
 					alt="download-icon"
 				/>
 				&nbsp;&nbsp;
-				<p style={{ fontSize: 14, fontWeight: 'bold' }}>{btnText}</p>
+				<ButtonText>{btnText}</ButtonText>
 			</FlexRowContainer>
-		</button>
+		</Button>
 	);
 };
 
